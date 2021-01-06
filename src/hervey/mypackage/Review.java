@@ -187,7 +187,7 @@ public class Review {
   
   
   /*
-   * Method to determine the total sentiment value of a review.
+   * Method to determine the total sentiment value of a review. 
    */
   public static double totalSentiment(String fileName) {
     String reviewText = textToString(fileName);
