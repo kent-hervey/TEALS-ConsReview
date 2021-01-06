@@ -1,3 +1,4 @@
+package hervey.mypackage;
 import java.util.Scanner;
 import java.io.File;
 import java.util.HashMap;
