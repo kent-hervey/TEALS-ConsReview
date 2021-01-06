@@ -9,7 +9,7 @@ import java.io.*;
 /**
  * Class that contains helper methods for the Review Lab
  **/
-public class Review {
+public class XReview {
   
   private static HashMap<String, Double> sentiment = new HashMap<String, Double>();
   private static ArrayList<String> posAdjectives = new ArrayList<String>();
@@ -176,13 +176,13 @@ public class Review {
   public static void activity1()
   {
     
-    System.out.println(Review.sentimentVal("happily"));
-    System.out.println(Review.sentimentVal("terrible"));
-    System.out.println(Review.sentimentVal("cold"));
+    System.out.println(XReview.sentimentVal("happily"));
+    System.out.println(XReview.sentimentVal("terrible"));
+    System.out.println(XReview.sentimentVal("cold"));
     System.out.println();
-    System.out.println(Review.sentimentVal("awesome"));
-    System.out.println(Review.sentimentVal("rotten"));
-    System.out.println(Review.sentimentVal("super"));
+    System.out.println(XReview.sentimentVal("awesome"));
+    System.out.println(XReview.sentimentVal("rotten"));
+    System.out.println(XReview.sentimentVal("super"));
   }
   
   
@@ -296,7 +296,7 @@ public class Review {
    */
   public static String fakeReview(String fileName)
   {
-    String reviewWords = Review.textToString(fileName);
+    String reviewWords = XReview.textToString(fileName);
     String oneWord;
     String fakeReview = "";
     
@@ -350,7 +350,7 @@ public class Review {
    */
   public static String activity4 (String fileName)
   {
-    String reviewWords = Review.textToString(fileName);
+    String reviewWords = XReview.textToString(fileName);
     String oneWord;
     String fakeReview = "";
     String replacementWord;
@@ -380,7 +380,7 @@ public class Review {
         if ( !punctuation.equals("") )
           temp = temp.substring(0, temp.length()-1);
         // get adjectives sentiment value
-        sentimentValue = Review.sentimentVal(temp);
+        sentimentValue = XReview.sentimentVal(temp);
         // find stronger adjective to replace current word
         if (sentimentValue >0)
         {
