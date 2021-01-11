@@ -9,7 +9,7 @@ import java.io.*;
 /**
  * Class that contains helper methods for the Review Lab
  **/
-public class Review {
+public class OriginalReview {
   
   private static HashMap<String, Double> sentiment = new HashMap<String, Double>();
   private static ArrayList<String> posAdjectives = new ArrayList<String>();
@@ -38,7 +38,7 @@ public class Review {
       Scanner input = new Scanner(new File("positiveAdjectives.txt"));
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
-       // System.out.println(temp);
+        System.out.println(temp);
         posAdjectives.add(temp);
       }
       input.close();
@@ -66,8 +66,6 @@ public class Review {
    */
   public static String textToString( String fileName )
   {  
-	  
-	  System.out.println("at top of textToString method");
     String temp = "";
     try {
       Scanner input = new Scanner(new File(fileName));
@@ -83,7 +81,6 @@ public class Review {
       System.out.println("Unable to locate " + fileName);
     }
     //make sure to remove any additional space that may have been added at the end of the string.
-    System.out.println("temp is:  " + temp);
     return temp.trim();
   }
   
@@ -165,91 +162,5 @@ public class Review {
     } else {
       return randomNegativeAdj();
     }
-  }
-  
-/* Activity 2 Sentiment Value
- * takes filename as a String and returns a double
- * looks at each word in the review and finds the sentiment value
- * each word's value gets added to a total sentiment variable
- * that variable is returned once the review is fully looked at
- */
-  public static double totalSentiment(String filename) {
-	  String review = textToString(filename);
-	  review += " ";
-	  
-	  double sentimentTotal = 0.0;
-	  String word = "";
-	  
-	  for(int i = 0; i < review.length(); i++) {
-		  char letter = review.charAt(i);
-		  
-		  if (letter != ' ') {
-			  word += letter;
-		  } else {
-			  word = removePunctuation(word);
-			  double sentiment = sentimentVal(word);
-			  sentimentTotal += sentiment;
-			  word = "";
-		  }
-	  }
-	  
-	  return sentimentTotal;
-  }
-  
-/* Activity 2 Star Rating
- * takes filename as a String and returns an integer
- * takes the total sentiment of the filename and sets it to a new variable "total"
- * total is then compared to a number to figure out what range of numbers it fall into
- * that range is associated with a star ranking and total's star ranking is returned
- */
-  public static int starRating(String filename) {
-	  double total = totalSentiment(filename);
-	  int stars = 0;
-	  
-	  if (total > 35.0) {
-		  stars = 5;
-	  }
-	  else if (total > 25.0 && total <= 35.0) {
-		  stars = 4;
-	  }
-	  else if (total > 15.0 && total <= 25.0) {
-		  stars = 3;
-	  }
-	  else if (total > 5.0 && total <= 15.0) {
-		  stars = 2;
-	  }
-	  else if (total > -5.0 && total <= 5.0) {
-		  stars = 1;
-	  }
-	  else {
-		  stars = 0;
-	  }
-	  
-	  return stars;
-  }
-  
-// Activity 3
-  public static String fakeReview(String filename) {
-	  System.out.println("asdlkfj");
-	  String review = textToString(filename);
-	  
-	  System.out.println("review is:  " + review);
-	  String fakeReview =  "";
-	  
-	  for(int i = 0; i < review.length(); i++) {
-		  char letter = review.charAt(i);
-		  
-		  if (letter != '*') {
-			  fakeReview += review.charAt(i);
-		  } else if(letter == '*') {
-			  fakeReview += randomAdjective();
-			  while(letter != ' ') {
-				i++;
-			  }
-		  }
-			  
-	  }
-	  System.out.println("bottom of fakeReview just before return and fakeReview var is:  " + fakeReview);
-	  return fakeReview;
   }
 }
